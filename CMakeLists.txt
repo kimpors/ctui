@@ -5,13 +5,21 @@ set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_C_STANDARD 23)
 
-add_executable(${PROJECT_NAME} src/main.c)
+set(PROJECT_DEBUG_NAME ${PROJECT_NAME}_debug)
+
+
 add_subdirectory(cmdio)
-target_link_libraries(${PROJECT_NAME} PUBLIC cmdio)
-target_include_directories(${PROJECT_NAME} PUBLIC include cmdio)
+add_executable(${PROJECT_DEBUG_NAME} src/main.c src/ctui.c)
+
+target_link_libraries(${PROJECT_DEBUG_NAME} PUBLIC cmdio)
+target_include_directories(${PROJECT_DEBUG_NAME} PUBLIC include cmdio)
+
 
 if (WIN32)
-	add_library(${PROJECT_NAME} STATIC main.c)
+	add_library(${PROJECT_NAME} STATIC src/ctui.c)
 else()
-	add_library(${PROJECT_NAME} SHARED main.c)
+	add_library(${PROJECT_NAME} SHARED src/ctui.c)
 endif(WIN32)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC cmdio)
+target_include_directories(${PROJECT_NAME} PUBLIC include cmdio)
