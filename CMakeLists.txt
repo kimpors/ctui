@@ -3,7 +3,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(ctui LANGUAGES C)
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_BUILD_TYPE Debug)
-set(C_STANDARD 23)
+set(CMAKE_C_STANDARD 23)
 
 add_executable(${PROJECT_NAME} src/main.c)
 add_subdirectory(cmdio)
