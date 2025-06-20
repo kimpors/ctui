@@ -3,7 +3,7 @@
 
 void ci_winshow(CI_Window *win)
 {
-	char *s = "help there on the way to you";
+	char *ps = win->text;
 
 	for (size_t y = 0; y < win->s.row; y++)
 	{
@@ -14,7 +14,7 @@ void ci_winshow(CI_Window *win)
 			else if ((y == win->s.row - 1 && x == 0) || (y == win->s.row - 1 && x == win->s.col - 1)) putchar('+');
 			else if ((y == 0 || y == win->s.row - 1) && x > 0 && x < win->s.col - 1) putchar('-');
 			else if ((y > 0 && y < win->s.row - 1) && (x == 0 || x == win->s.col - 1)) putchar('|');
-			else if (*s && (y > 1 && y < win->s.row - 2) && (x > 1 && x < win->s.col - 2)) putchar(*s++);
+			else if (*ps && (y > 1 && y < win->s.row - 2) && (x > 1 && x < win->s.col - 2)) putchar(*ps++);
 			else putchar(' ');
 		}
 

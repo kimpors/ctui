@@ -6,10 +6,11 @@ typedef struct {
 		size_t row;
 		size_t col;
 	} s;
-	struct position {
+	struct pos {
 		size_t x;
 		size_t y;
 	} p;
+	char *text;
 } CI_Window;
 
 void ci_winshow(CI_Window *win);
