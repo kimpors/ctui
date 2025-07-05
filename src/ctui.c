@@ -3,22 +3,21 @@
 
 void ci_winshow(CI_Window *win)
 {
-	char *ps = win->text;
+	CI_Vec p = win->pos;
+	CI_Vec s = win->size;
+	char *ps = win->text.text;
 
-	size_t wy = win->p.y, wx = win->p.x;
-	size_t wrow = win->s.row, wcol = win->s.col;
-
-	for (size_t y = 0; y < wrow; y++)
+	for (size_t y = 0; y < s.y; y++)
 	{
-		if (wy != 0 && wx != 0) comove(wy + y, wx);
+		if (p.x != 0 && p.y != 0) comove(p.y + y, p.x);
 
-		for (size_t x = 0; x < wcol; x++)
+		for (size_t x = 0; x < s.x; x++)
 		{
-			if ((y == 0 && x == 0) || (y == 0 && x == wcol - 1)) putchar('+');
-			else if ((y == wrow - 1 && x == 0) || (y == wrow - 1 && x == wcol - 1)) putchar('+');
-			else if ((y == 0 || y == wrow - 1) && x > 0 && x < wcol - 1) putchar('-');
-			else if ((y > 0 && y < wrow - 1) && (x == 0 || x == wcol - 1)) putchar('|');
-			else if (*ps && (y > 1 && y < wrow - 2) && (x > 1 && x < wcol - 2)) putchar(*ps++);
+			if ((y == 0 && x == 0) || (y == 0 && x == s.x - 1)) putchar('+');
+			else if ((y == s.y - 1 && x == 0) || (y == s.y - 1 && x == s.x - 1)) putchar('+');
+			else if ((y == 0 || y == s.y - 1) && x > 0 && x < s.x - 1) putchar('-');
+			else if ((y > 0 && y < s.y - 1) && (x == 0 || x == s.x - 1)) putchar('|');
+			else if (*ps && (y > 1 && y < s.y - 2) && (x > 1 && x < s.x - 2)) putchar(*ps++);
 			else putchar(' ');
 		}
 

@@ -4,17 +4,18 @@
 typedef struct {
 	size_t x;
 	size_t y;
-} CI_Pos;
+} CI_Vec;
 
 typedef struct {
-	size_t col;
-	size_t row;
-} CI_Size;
-
-typedef struct {
-	CI_Pos p;
-	CI_Size s;
 	char *text;
+	CI_Vec margin;
+	CI_Vec padding;
+} CI_Text;
+
+typedef struct {
+	CI_Vec pos;
+	CI_Vec size;
+	CI_Text text;
 } CI_Window;
 
 void ci_winshow(CI_Window *win);
