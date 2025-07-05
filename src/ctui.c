@@ -1,7 +1,7 @@
 #include "cmdio.h"
 #include "ctui.h"
 
-void ci_winshow(CI_Window *win)
+void ci_winshow(CI_Win *win)
 {
 	CI_Vec p = win->pos;
 	CI_Vec s = win->size;

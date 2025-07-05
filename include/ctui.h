@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#define CI_VEC(x, y) (CI_Vec){ x, y }
 
 typedef struct {
 	size_t x;
@@ -16,6 +17,6 @@ typedef struct {
 	CI_Vec pos;
 	CI_Vec size;
 	CI_Text text;
-} CI_Window;
+} CI_Win;
 
-void ci_winshow(CI_Window *win);
+void ci_winshow(CI_Win *win);
