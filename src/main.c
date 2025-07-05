@@ -7,11 +7,11 @@ int main(void)
 	cosize(&size);
 	// coclear();
 	CI_Window win;
-	win.s = (struct size){ 10, 25 };
-	win.p = (struct pos){ 0, 0 };
+	win.s = (CI_Size){ 25, 10 };
+	win.p = (CI_Pos){ 0, 0 };
 	// win.p = (struct pos){ (size.ws_col / 2) - (win.s.col / 2), (size.ws_row / 2) - (win.s.row / 2) };
 	// win.p = (struct pos){0, 0};
-	win.text = "hello from window";
+	win.text = "help page";
 	ci_winshow(&win);
 	return 0;
 }

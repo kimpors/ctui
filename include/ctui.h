@@ -12,14 +12,8 @@ typedef struct {
 } CI_Size;
 
 typedef struct {
-	struct size {
-		size_t row;
-		size_t col;
-	} s;
-	struct pos {
-		size_t x;
-		size_t y;
-	} p;
+	CI_Pos p;
+	CI_Size s;
 	char *text;
 } CI_Window;
 
