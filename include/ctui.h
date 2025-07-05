@@ -1,6 +1,8 @@
 #pragma once
 #include <stdio.h>
+
 #define CI_VEC(x, y) (CI_Vec){ x, y }
+#define CI_TEXT(s, pad) (CI_Text){ s, pad }
 
 typedef struct {
 	size_t x;
@@ -8,9 +10,8 @@ typedef struct {
 } CI_Vec;
 
 typedef struct {
-	char *text;
-	CI_Vec margin;
-	CI_Vec padding;
+	char *s;
+	CI_Vec pad;
 } CI_Text;
 
 typedef struct {

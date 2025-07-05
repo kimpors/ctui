@@ -5,7 +5,9 @@ void ci_winshow(CI_Win *win)
 {
 	CI_Vec p = win->pos;
 	CI_Vec s = win->size;
-	char *ps = win->text.text;
+
+	char *ps = win->text.s;
+	CI_Vec pad = win->text.pad;
 
 	for (size_t y = 0; y < s.y; y++)
 	{
@@ -17,7 +19,7 @@ void ci_winshow(CI_Win *win)
 			else if ((y == s.y - 1 && x == 0) || (y == s.y - 1 && x == s.x - 1)) putchar('+');
 			else if ((y == 0 || y == s.y - 1) && x > 0 && x < s.x - 1) putchar('-');
 			else if ((y > 0 && y < s.y - 1) && (x == 0 || x == s.x - 1)) putchar('|');
-			else if (*ps && (y > 1 && y < s.y - 2) && (x > 1 && x < s.x - 2)) putchar(*ps++);
+			else if (*ps && (y > pad.y && y < s.y - pad.y - 1) && (x > pad.x && x < s.x - pad.x - 1)) putchar(*ps++);
 			else putchar(' ');
 		}
 
